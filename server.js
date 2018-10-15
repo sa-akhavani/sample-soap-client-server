@@ -7,8 +7,8 @@ const app = express();
 const port = 3001;
 const wsdl_path = "/wsdl";
 
-function splitter_function(args) {
-  console.log('splitter_function');
+function splitterFunction(args) {
+  console.log('splitter is called');
   var splitter = args.splitter;
   var splitted_msg = args.message.split(splitter);
   var result = [];
@@ -23,10 +23,10 @@ function splitter_function(args) {
 let serviceObject = {
   MessageSplitterService: {
     MessageSplitterServiceSoapPort: {
-      MessageSplitter: splitter_function
+      MessageSplitter: splitterFunction
     },
     MessageSplitterServiceSoap12Port: {
-      MessageSplitter: splitter_function
+      MessageSplitter: splitterFunction
     }
   }
 };
