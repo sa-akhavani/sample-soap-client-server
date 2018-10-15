@@ -2,7 +2,7 @@
 const soap = require('soap');
 let url = 'http://localhost:3001/wsdl?wsdl';
 
-async function behx() {
+async function sendRequest() {
   try {
   let client = await soap.createClientAsync(url);
 
@@ -17,4 +17,4 @@ async function behx() {
   }
 }
 
-behx();
+sendRequest();
