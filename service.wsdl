@@ -13,7 +13,7 @@
   <!-- WSDL TYPES: definition of the data types that are used in the web service -->
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="MessageSplitterRequest">
+      <s:element name="SayHelloRequest">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="message" type="s:string"/>
@@ -21,7 +21,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="MessageSplitterResponse">
+      <s:element name="SayHelloResponse">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="unbounded" name="result" type="s:string"/>
@@ -31,52 +31,37 @@
     </s:schema>
   </wsdl:types>
   <!-- MESSAGES: defines the data being exchanged between the service and client -->
-  <wsdl:message name="MessageSplitterSoapIn">
-    <wsdl:part name="parameters" element="tns:MessageSplitterRequest"/>
+  <wsdl:message name="SayHelloSoapIn">
+    <wsdl:part name="parameters" element="tns:SayHelloRequest"/>
   </wsdl:message>
-  <wsdl:message name="MessageSplitterSoapOut">
-    <wsdl:part name="parameters" element="tns:MessageSplitterResponse"/>
+  <wsdl:message name="SayHelloSoapOut">
+    <wsdl:part name="parameters" element="tns:SayHelloResponse"/>
   </wsdl:message>
   <!-- PORT TYPES: defines the complete communication operation (one way/round trip) -->
-  <wsdl:portType name="MessageSplitterSoapPort">
+  <wsdl:portType name="SayHelloSoapPort">
     <!-- The operation name must be the same as the one specified in the service object -->
-    <wsdl:operation name="MessageSplitter">
-      <wsdl:input message="tns:MessageSplitterSoapIn"/>
-      <wsdl:output message="tns:MessageSplitterSoapOut"/>
+    <wsdl:operation name="SayHello">
+      <wsdl:input message="tns:SayHelloSoapIn"/>
+      <wsdl:output message="tns:SayHelloSoapOut"/>
     </wsdl:operation>
   </wsdl:portType>
   <!-- BINDING: provides details on how a portType operation will actually be transmitted -->
-  <wsdl:binding name="MessageSplitterServiceSoapBinding" type="tns:MessageSplitterSoapPort">
+  <wsdl:binding name="SayHelloServiceSoapBinding" type="tns:SayHelloSoapPort">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="MessageSplitter">
-      <soap:operation soapAction="MessageSplitter" style="document"/>
+    <wsdl:operation name="SayHello">
+      <soap:operation soapAction="SayHello" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="MessageSplitterServiceSoap12Binding" type="tns:MessageSplitterSoapPort">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="MessageSplitter">
-      <soap12:operation soapAction="MessageSplitter" style="document"/>
-      <wsdl:input>
-        <soap12:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <!-- SERVICE:  -->
-  <wsdl:service name="MessageSplitterService">
-    <wsdl:port name="MessageSplitterServiceSoapPort" binding="tns:MessageSplitterServiceSoapBinding">
+  <wsdl:service name="SayHelloService">
+    <wsdl:port name="SayHelloServiceSoapPort" binding="tns:SayHelloServiceSoapBinding">
       <soap:address location="http://localhost:3001/wsdl"/>
-    </wsdl:port>
-    <wsdl:port name="MessageSplitterServiceSoap12Port" binding="tns:MessageSplitterServiceSoap12Binding">
-      <soap12:address location="http://localhost:3001/wsdl"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

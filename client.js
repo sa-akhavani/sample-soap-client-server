@@ -7,10 +7,10 @@ async function sendRequest() {
   let client = await soap.createClientAsync(url);
 
   let args = {
-    message: "id1:12:34:56:out42",
-    splitter: ":"
+    firstName: "Seyed Ali",
+    lastName: "Akhavani"
   };
-  let result = await client.MessageSplitterAsync(args);
+  let result = await client.SayHelloAsync(args);
   console.log(result[0]);
   } catch (error) {
     console.log(error);
